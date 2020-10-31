@@ -8,8 +8,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +18,11 @@ import com.rickandmorty.rickandmorty.model.character.Characters;
 import com.rickandmorty.rickandmorty.model.episode.EpisodeResult;
 import com.rickandmorty.rickandmorty.service.CharacterService;
 import com.rickandmorty.rickandmorty.service.EpisodeService;
-
+/**
+ * 
+ * @author orhan
+ *
+ */
 @Controller
 @RequestMapping("/character")
 public class CharacterController {
@@ -31,7 +33,10 @@ public class CharacterController {
 	@Autowired
 	private EpisodeService episodeService;
 	
-	
+	/**
+	 * 
+	 * @return 
+	 */
 	@RequestMapping(value="/")
 	public String getIndex() {
 		
@@ -39,10 +44,17 @@ public class CharacterController {
 	}
 	
 	
-	
+	/**
+	 * 
+	 * @param page pagination gelen parametre
+	 * @param sortBy sıralama için gelen paramatre
+	 * @return Karakterleri listesini dönderir
+	 * 
+	 *  O(1)+O(1)+....+ O(1)=O(1) 
+	 */  
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	@ResponseBody
-	public Characters listCharacter(Model model,@RequestParam(name="page",required=false,defaultValue="0") long page, @RequestParam(name="sortBy",required=false,defaultValue="") String sortBy) {
+	public Characters listCharacter(@RequestParam(name="page",required=false,defaultValue="0") long page, @RequestParam(name="sortBy",required=false,defaultValue="") String sortBy) {
 		
 		  Characters character = characterService.listCharacter(page, sortBy);
 		  
@@ -58,9 +70,18 @@ public class CharacterController {
 		
 	}
 	
+	/**
+	 * 
+	 * @param id karakter id
+	 * @return   CharacterResult türünde verir dönderir
+	 * @throws URISyntaxException
+	 * 
+	 *  O(1)+O(1)+....+ O(n)=O(n) - Tüm Url'ler  üzerinde işlem yapıyor 1'den N' kadar 
+	 */
+	
 	@RequestMapping(value="/detail",method=RequestMethod.GET)
 	@ResponseBody
-	public CharacterResult getCharacter(@RequestParam(name="id",required=true)  int  id,Model model) throws URISyntaxException {
+	public CharacterResult getCharacter(@RequestParam(name="id",required=true)  int  id) throws URISyntaxException {
 		CharacterResult result=characterService.getCharacter(id);
 		List<EpisodeResult> episodeResults=new ArrayList<EpisodeResult>();
 		

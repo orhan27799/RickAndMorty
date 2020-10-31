@@ -9,7 +9,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +19,11 @@ import com.rickandmorty.rickandmorty.model.episode.Episode;
 import com.rickandmorty.rickandmorty.model.episode.EpisodeResult;
 import com.rickandmorty.rickandmorty.service.CharacterService;
 import com.rickandmorty.rickandmorty.service.EpisodeService;
-
+/**
+ * 
+ * @author orhan
+ *
+ */
 @Controller
 @RequestMapping("/episode")
 public class EpisodeController {
@@ -39,6 +42,14 @@ public class EpisodeController {
 		return "episodes";
 	}
 	
+	/**
+	 * 
+	 * @param page pagination gelen parametre
+	 * @param sortBy sıralama için gelen paramatre
+	 * @return Bölüm listesini dönderir
+	 * 
+	 *  O(1)+O(1)+....+ O(1)=O(1) 
+	 */  
 	
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	@ResponseBody
@@ -58,6 +69,15 @@ public class EpisodeController {
 		
 	}
 	
+
+	/**
+	 * 
+	 * @param id episode id
+	 * @return   EpisodeResult türünde verir dönderir
+	 * @throws URISyntaxException
+	 * 
+	 *  O(1)+O(1)+....+ O(n)=O(n) - Tüm Url'ler  üzerinde işlem yapıyor 1'den N' kadar 
+	 */
 	@RequestMapping(value="/detail",method=RequestMethod.GET)
 	@ResponseBody
 	public EpisodeResult getEpisode(@RequestParam(name="id",required=true)  int  id,Model model) throws URISyntaxException {

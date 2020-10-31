@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.rickandmorty.rickandmorty.model.report.EndPoints;
 import com.rickandmorty.rickandmorty.model.report.Endpoint;
 import com.rickandmorty.rickandmorty.service.ReportService;
-
+/**
+ * 
+ * @author orhan
+ *
+ */
 @Controller
 @RequestMapping("/report")
 public class ReportController {
@@ -27,6 +31,12 @@ public class ReportController {
 		
 	}
 	
+	/**
+	 * 
+	 * @return Tüm endpointleri dönderir
+	 * 
+	 *  O(1)+O(1)+....+ O(n)=O(n) - Tüm Url'ler  üzerinde işlem yapıyor 1'den N' kadar 
+	 */
 	@RequestMapping(value="/get",method=RequestMethod.GET)
 	@ResponseBody
 	public EndPoints getEndPoint() {
