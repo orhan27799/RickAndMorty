@@ -1,8 +1,6 @@
 package com.rickandmorty.rickandmorty.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -23,22 +21,15 @@ public class EpisodeServiceImpl implements EpisodeService {
 
 	@Override
 	public Episode listEpisode(long page, String sortBy) {
-		 ResponseEntity<Episode> responseEntity =
-	                restTemplate.exchange(API_URL + "/episode/" + ((page == 0) ? "" : "?page=" + page),
-	                        HttpMethod.GET, null,
-	                        new ParameterizedTypeReference<Episode>() {
-	                        });
-	        return responseEntity.getBody();
+	        
+	        ResponseEntity<Episode> response = restTemplate.getForEntity(API_URL + "/episode/" + ((page == 0) ? "" : "?page=" + page), Episode.class);
+	        return response.getBody();	
 	}
 
 	@Override
 	public EpisodeResult getEpisode(int id) {
-		 ResponseEntity<EpisodeResult> responseEntity =
-	                restTemplate.exchange(API_URL + "/episode/" + id,
-	                        HttpMethod.GET, null,
-	                        new ParameterizedTypeReference<EpisodeResult>() {
-	                        });
-	        return responseEntity.getBody();
+	        ResponseEntity<EpisodeResult> response = restTemplate.getForEntity(API_URL + "/episode/" + id, EpisodeResult.class);
+	        return response.getBody();
 	}
 
 }

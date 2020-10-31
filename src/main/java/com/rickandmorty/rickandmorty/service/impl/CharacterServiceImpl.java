@@ -1,8 +1,6 @@
 package com.rickandmorty.rickandmorty.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -21,13 +19,9 @@ public class CharacterServiceImpl  implements CharacterService{
 
 	@Override
 	public Characters listCharacter(long page, String sortBy) {
-		
-	      ResponseEntity<Characters> responseEntity =
-	                restTemplate.exchange(API_URL + "/character/" + ((page == 0) ? "" : "?page=" + page),
-	                        HttpMethod.GET, null,
-	                        new ParameterizedTypeReference<Characters>() {
-	                        });
-	        return responseEntity.getBody();		
+	      
+	        ResponseEntity<Characters> response = restTemplate.getForEntity(API_URL + "/character/" + ((page == 0) ? "" : "?page=" + page), Characters.class);
+	        return response.getBody();		
 	}
 
 	@Override

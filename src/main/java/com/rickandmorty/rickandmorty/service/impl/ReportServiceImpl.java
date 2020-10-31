@@ -1,8 +1,6 @@
 package com.rickandmorty.rickandmorty.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -20,12 +18,8 @@ public class ReportServiceImpl  implements ReportService{
 	
 	@Override
 	public Endpoint getEndpoint(String uri) {
-	     ResponseEntity<Endpoint> responseEntity =
-	                restTemplate.exchange(metricUrl + uri,
-	                        HttpMethod.GET, null,
-	                        new ParameterizedTypeReference<Endpoint>() {
-	                        });
-	        return responseEntity.getBody();
+	        ResponseEntity<Endpoint> response = restTemplate.getForEntity(metricUrl + uri, Endpoint.class);
+	        return response.getBody();
 	}
 
 }

@@ -41,6 +41,10 @@
  max-height: 200px;
  
  }
+ 
+ body {
+ background-color: gray;
+ }
  </style>
 
 </head>
