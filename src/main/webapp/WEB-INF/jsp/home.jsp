@@ -37,6 +37,10 @@
     box-shadow: 0.5px 1px 2px hsla(0, 0%, 20%, 1);
 }
  
+ .card-img-top {
+ max-height: 200px;
+ 
+ }
  </style>
 
 </head>
@@ -50,26 +54,26 @@
 	<div class="row">
 	    <div class="col-md-4">
     		<div class="card mb">
-              <img class="card-img-top" src="http://www.placehold.it/286x180" alt="Card image cap">
+              <img class="card-img-top" src="https://rickandmortyapi.com/api/character/avatar/170.jpeg" alt="Card image cap">
               <div class="card-body mb">
-                <a href="<c:url value = "/character/"/>" class="btn btn-primary mb">Character</a>
+                <a href="<c:url value = "/character/"/>" class="btn btn-primary mb">Characters</a>
               </div>
             </div>
         </div>
         <div class="col-md-4">
     		<div class="card mb">
-              <img class="card-img-top" src="http://www.placehold.it/286x180" alt="Card image cap">
+              <img class="card-img-top" src="https://images2.minutemediacdn.com/image/fetch/w_736,h_485,c_fill,g_auto,f_auto/https%3A%2F%2Ffansided.com%2Ffiles%2F2020%2F04%2FSummer-Tinkles-Song-_-Rick-and-Morty-_-Adult-Swim-850x560.jpg" alt="Card image cap">
               <div class="card-body mb">
            
-              <a href="<c:url value = "/episode/"/>" class="btn btn-primary mb">Episode</a>
+              <a href="<c:url value = "/episode/"/>" class="btn btn-primary mb">Episodes</a>
               </div>
             </div>
         </div>
         <div class="col-md-4">
     		<div class="card mb">
-              <img class="card-img-top" src="http://www.placehold.it/286x180" alt="Card image cap">
+              <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQlPqsBcn18W0xNuqf95XVuPpH4jyUDWY-YGg&usqp=CAU" alt="Card image cap">
               <div class="card-body mb">
-               <a href="<c:url value = "/report/"/>" class="btn btn-primary mb">Report</a>
+               <a href="<c:url value = "/report/"/>" class="btn btn-primary mb">Reports</a>
               </div>
             </div>
         </div>
