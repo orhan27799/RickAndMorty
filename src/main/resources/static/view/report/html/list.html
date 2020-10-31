@@ -1,0 +1,33 @@
+
+<div class="container">
+<h1 class="mt-4" >Report List</h1>
+        <div class="row">
+        
+
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Url</th>
+					<th scope="col">Count of visits</th>
+					<th scope="col">Total Time</th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="url in endPoints.urlList ">
+				<tr>
+					<th scope="row">{{$index}}</th>
+					<td>{{url}}</td>
+					<td>{{endPoints.endpoints[$index].measurements[0].value}}</td>
+					<td>{{endPoints.endpoints[$index].measurements[1].value}}</td>
+				</tr>
+			
+				
+			</tbody>
+		</table>
+
+
+	</div>
+
+    </div>
+

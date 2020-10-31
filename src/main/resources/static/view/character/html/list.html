@@ -1,0 +1,43 @@
+
+<div class="container">
+<h1 class="mt-4" style="text-align: center;">Character List</h1>
+        <div class="row">
+            <div class="col-3 my-3">
+                
+            <select ng-model="sortBy" class="form-control" ng-change="filter()">
+
+              <option value="name">Name</option>
+              <option value="episode">Episode</option>
+            
+            </select>
+
+        </div>
+        
+        
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-repeat="result in response.results ">
+                <div class="box card">
+                    <div class="box cardImg">
+                        <img ng-src="{{result.image}}" alt="...">
+                    </div>
+                    <div class="info">
+                        <h4><a  href="#/details/{{result.id}}">{{result.name}}</a></h4>
+                        <p>{{result.status}}-{{result.species}}</p>
+                        
+                        <p><span>Last known location:</span> {{result.location.name}}</p>
+                        
+                        <p><span> First seen in:</span> {{result.origin.name}}</p>
+                        
+                       
+                        
+                  
+                    </div>
+                    
+                </div>
+            </div>
+           
+           
+        </div>
+
+     <ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></ul>        
+    </div>
+

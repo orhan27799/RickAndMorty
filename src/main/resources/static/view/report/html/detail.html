@@ -1,0 +1,48 @@
+ <div class="container">
+  <h1 >Episode</h1>
+        	<div class="row">
+               <div class="col-xs-4 item-photo">
+                    <img style="max-width:100%;" ng-src="{{character.image}}" />
+                </div>
+                <div class="col-xs-5" style="border:0px solid gray">
+                    <!-- Datos del vendedor y titulo del producto -->
+                    <h3>Name:{{episode.name}}</h3>    
+                    <h5 style="color:#337ab7">Episode: {{episode.episode}}</h5>
+        
+                 
+                  
+                    
+                </div>                              
+        
+                <div class="col-xs-9">
+                    <h2>Character List </h2>
+                    <div style="width:100%;border-top:1px solid silver">
+                    
+			  
+			  
+			      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-repeat="character in episode.characterResults">
+                <div class="box card">
+                    <div class="box cardImg">
+                        <img ng-src="{{character.image}}" alt="...">
+                    </div>
+                    <div class="info">
+                        <h4><a  href="../character/#/details/{{character.id}}">{{character.name}}</a></h4>
+                        <p>{{character.status}}-{{character.species}}</p>
+                        
+                        <p><span>Last known location:</span> {{character.location.name}}</p>
+                        
+                        <p><span> First seen in:</span> {{character.origin.name}}</p>
+                        
+                       
+                        
+                  
+                    </div>
+                    
+                </div>
+            </div>
+           
+			  
+                    </div>
+                </div>		
+            </div>
+        </div>  
